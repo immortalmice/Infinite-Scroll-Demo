@@ -1,7 +1,5 @@
 var LOAD_OFFSET = window.innerHeight + 1000;
 var DIV_AMOUNT_PER_GENERATIOIN = 10;
-var CHANGE_INTERVAL = 2;
-var FADE_MODIFIER = 0.5;
 
 Vue.component("info_div", {
 	data: function() {
@@ -43,6 +41,14 @@ var vue = new Vue({
 	}
 });
 
+var vueSetting = new Vue({
+	el: ".footer",
+	data: {
+		CHANGE_INTERVAL: 2,
+		FADE_MODIFIER: 0.3
+	}
+});
+
 function whenScroll(){
 	var YOffset = window.pageYOffset;
 	var arrary_length = vue.div_arrary.length;
@@ -73,9 +79,12 @@ function getColor(YOffset){
 }
 
 function getBackGroundColor(YOffset){
+	if(vueSetting.CHANGE_INTERVAL < 1){
+		vueSetting.CHANGE_INTERVAL = 1;
+	}
 	var gap = 18 * 256;
 	var description_div_height = document.getElementById('description_div').offsetHeight;
-	YOffset = (YOffset - description_div_height) / CHANGE_INTERVAL;
+	YOffset = (YOffset - description_div_height) / vueSetting.CHANGE_INTERVAL;
 
 	var remainder = YOffset < description_div_height ? 0 : (YOffset - description_div_height) % gap;
 	var zone_id = Math.floor(remainder / 256);
@@ -164,6 +173,7 @@ function getBackGroundColor(YOffset){
 	}
 
 	returnObj = fade(returnObj);
+	console.log(returnObj);
 
 	return returnObj;
 }
@@ -182,10 +192,15 @@ function converter(obj){
 }
 
 function fade(obj){
+	if(vueSetting.FADE_MODIFIER < 0){
+		vueSetting.FADE_MODIFIER = 0;
+	}else if(vueSetting.FADE_MODIFIER > 1){
+		vueSetting.FADE_MODIFIER = 1;
+	}
 	return {
-		r: Math.floor(256 - (256 - obj.r) * FADE_MODIFIER),
-		g: Math.floor(256 - (256 - obj.g) * FADE_MODIFIER),
-		b: Math.floor(256 - (256 - obj.b) * FADE_MODIFIER)
+		r: Math.floor(255 - (255 - obj.r) * vueSetting.FADE_MODIFIER),
+		g: Math.floor(255 - (255 - obj.g) * vueSetting.FADE_MODIFIER),
+		b: Math.floor(255 - (255 - obj.b) * vueSetting.FADE_MODIFIER)
 	};
 }
 

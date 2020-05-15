@@ -6,11 +6,16 @@
 	position: fixed;
 	bottom: 0px;
 	padding: 20px;
+	background-color: #EEEEEE;
 }
 
 .footer p{
 	margin-left: 20px;
 	margin-bottom: 0px;
+}
+
+.footer > div{
+	display: inline-block;
 }
 
 .info_div{
@@ -27,4 +32,11 @@
 .info_div div h2, h4{
 	-webkit-text-stroke: 1px #555555;
 	text-stroke: 1px #555555;
+}
+
+.input_descript{
+	display: block;
+	height: 24;
+	margin-bottom: 10px;
+	margin-left: 5px;
 }

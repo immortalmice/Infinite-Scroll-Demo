@@ -32,9 +32,22 @@
 		</div>
 	</div>
 	<div class="footer container-fluid">
-		<hr>
-		<p>本網站由<a href="https://github.com/immortalmice/">Immortalmice</a>製作</p>
-		<p>成果展示網頁服務由<a href="https://pages.github.com/">GitHub Pages</a>提供</p>
+		<div class="col-3">
+			<p>本網站由<a href="https://github.com/immortalmice/">Immortalmice</a>製作</p>
+			<p>成果展示網頁服務由<a href="https://pages.github.com/">GitHub Pages</a>提供</p>
+		</div>
+		<div class="col-4 input-group">
+			<div>
+				<span class="input_descript" title="輸入Y軸每隔多少px進行顏色變化" id="CHANGE_INTERVAL_DESCRIPT">變化區間(px > 1)</span>
+			</div>
+			<input v-model="CHANGE_INTERVAL" min="1" title="輸入Y軸每隔多少px進行顏色變化" class="form-control w-100" type="number" aria-describedby="CHANGE_INTERVAL_DESCRIPT">
+		</div>
+		<div class="col-4 input-group">
+			<div>
+				<span class="input_descript" title="輸入顏色淡化係數(1：不變 ~ 0：白)" id="FADE_MODIFIER_DESCRIPT">淡化係數(0 ~ 1)</span>
+			</div>
+			<input v-model="FADE_MODIFIER" class="form-control w-100" type="number"  title="輸入顏色淡化係數(1：不變 ~ 0：白)" min="0" max="22" aria-describedby="FADE_MODIFIER_DESCRIPT">
+		</div>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
