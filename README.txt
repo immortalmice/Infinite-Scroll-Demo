@@ -1,5 +1,5 @@
-Infinite-Scroll-Demo
----
+#Infinite-Scroll-Demo
+--
 
 這是一個可以無限向下捲動的網頁實作
 捲動的過程中，背景顏色會隨之漸變，漸變一輪後會循環繼續漸變
@@ -18,3 +18,5 @@ Div內部標示的字串顏色會是該背景顏色的補色
 	顏色輪迴的RGB數值會進行淡化處理，避免刺眼
 	數值必須於0~1之間，0是完全淡化，1是不做淡化
 	預設值為0.3
+	
+成果展示：[https://immortalmice.github.io/Infinite-Scroll-Demo/](https://immortalmice.github.io/Infinite-Scroll-Demo/)
