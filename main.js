@@ -1,18 +1,21 @@
 var LOAD_OFFSET = window.innerHeight + 1000;
 var DIV_AMOUNT_PER_GENERATIOIN = 10;
+function TEMPLATE(index, displayText, style){
+	return `
+	<div class=\"info_div d-flex\">
+		<div class=\"align-self-center\">
+			<h2 class=\"font-weight-bold\" v-bind:style=\"` + style + `\">Div編號：` + index + `</h2>
+			<h4 class=\"font-weight-bold\" v-bind:style=\"` + style + `\">背景顏色：` + displayText + `</h4>
+		</div>
+	</div>`;
+}
 
 Vue.component("info_div", {
 	data: function() {
 		return {};
 	},
 	props: ["data", "index"],
-	template: `
-		<div class=\"info_div d-flex\">
-			<div class=\"align-self-center\">
-				<h2 class=\"font-weight-bold\" v-bind:style=\"this.style\">Div編號：{{this.index}}</h2>
-				<h4 class=\"font-weight-bold\" v-bind:style=\"this.style\">背景顏色：{{this.displayText}}</h4>
-			</div>
-		</div>`,
+	template: TEMPLATE("{{this.index}}", "{{this.displayText}}", "this.style"),
 	computed: {
 		displayText: {
 			get: function(){
@@ -58,10 +61,22 @@ function whenScroll(){
 		for(var i = arrary_length; i < arrary_length + DIV_AMOUNT_PER_GENERATIOIN; i ++){
 			var YStart = i * 600 + document.getElementById('description_div').offsetHeight;
 
-			vue.div_arrary.push({
+			var obj = {
 				color: getColor(YStart),
 				backgroundColor: getBackGroundColor(YStart)
-			});
+			};
+
+			vue.div_arrary.push(obj);
+
+			//append child using plain javascript start, comment it if you want to use v-for instead
+			var new_div = document.createElement("div");
+			new_div.innerHTML = TEMPLATE(i, converter(obj.backgroundColor), "");
+			var selected = new_div.querySelector("div").querySelector("div");
+			selected.querySelector("h2").style.color = converter(obj.color);
+			selected.querySelector("h4").style.color = converter(obj.color);
+
+			document.getElementById("info_divs").append(new_div);
+			//append child using plain javascript end
 		}
 	}
 
@@ -173,7 +188,6 @@ function getBackGroundColor(YOffset){
 	}
 
 	returnObj = fade(returnObj);
-	console.log(returnObj);
 
 	return returnObj;
 }

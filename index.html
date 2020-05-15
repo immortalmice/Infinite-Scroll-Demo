@@ -24,11 +24,13 @@
 	</div>
 	<div class="container">
 		<div id="info_divs">
-			<info_div 
-				v-for="(div, index) in div_arrary"
-				v-bind:data="div"
-				v-bind:index="index"
-			></info_div>
+			<!-- a more simple way by using v-for
+				<info_div 
+					v-for="(div, index) in div_arrary"
+					v-bind:data="div"
+					v-bind:index="index"
+				></info_div>
+			-->
 		</div>
 	</div>
 	<div class="footer container-fluid">
