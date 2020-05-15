@@ -19,4 +19,8 @@ Div內部標示的字串顏色會是該背景顏色的補色
 	數值必須於0~1之間，0是完全淡化，1是不做淡化  
 	預設值為0.3
 	
-成果展示：[https://immortalmice.github.io/Infinite-Scroll-Demo/](https://immortalmice.github.io/Infinite-Scroll-Demo/)
+成果展示：[https://immortalmice.github.io/Infinite-Scroll-Demo/](https://immortalmice.github.io/Infinite-Scroll-Demo/)  
+
+使用到的框架：
+- [Boostrap](https://getbootstrap.com/)
+- [Vue](https://vuejs.org/)
