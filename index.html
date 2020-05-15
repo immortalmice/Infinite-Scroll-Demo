@@ -22,10 +22,21 @@
 			</ul>
 		</div>
 	</div>
+	<div class="container">
+		<div id="info_divs">
+			<info_div 
+				v-for="(div, index) in div_arrary"
+				v-bind:data="div"
+			></info_div>
+		</div>
+	</div>
 	<div class="footer container-fluid">
 		<hr>
 		<p>本網站由<a href="https://github.com/immortalmice/">Immortalmice</a>製作</p>
 		<p>成果展示網頁服務由<a href="https://pages.github.com/">GitHub Pages</a>提供</p>
 	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+	<script src="main.js"></script>
 </body>
 </html>
