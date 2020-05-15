@@ -68,7 +68,7 @@ function whenScroll(){
 
 			vue.div_arrary.push(obj);
 
-			//append child using plain javascript start, comment it if you want to use v-for instead
+			//append child using plain javascript START, comment these if you want to use v-for instead
 			var new_div = document.createElement("div");
 			new_div.innerHTML = TEMPLATE(i, converter(obj.backgroundColor), "");
 			var selected = new_div.querySelector("div").querySelector("div");
@@ -76,7 +76,7 @@ function whenScroll(){
 			selected.querySelector("h4").style.color = converter(obj.color);
 
 			document.getElementById("info_divs").append(new_div);
-			//append child using plain javascript end
+			//append child using plain javascript END
 		}
 	}
 
